@@ -17,6 +17,20 @@ class Game {
   }
 
   registerEvents() {
+    let comparison = (event) => {
+      let currentSymbol = this.currentSymbol.textContent;
+        if (currentSymbol == event.key.toLowerCase()) {
+          this.success();
+        } else {
+          this.fail();
+        }
+    }
+
+    document.addEventListener(`keydown`, comparison);
+    }
+      
+    
+    
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -24,7 +38,7 @@ class Game {
       В случае правильного ввода слова вызываем this.success()
       При неправильном вводе символа - this.fail();
      */
-  }
+  
 
   success() {
     this.currentSymbol.classList.add('symbol_correct');
