@@ -30,6 +30,8 @@ function addProduct(e) {
 		id.push(productId);
 		cart[0].innerHTML += cartProduct;
 	}
+
+	e.target.closest('.product').querySelector('.product__quantity-value').textContent = 1;
 }
 
 
@@ -37,8 +39,11 @@ function addProduct(e) {
 function countControl (e) {
 	let num = Number(e.target.closest('.product__quantity-controls').querySelector('.product__quantity-value').textContent);
 	if (e.target.classList.contains('product__quantity-control_dec')) {
-		if (e.target.closest('.product__quantity-controls').querySelector('.product__quantity-value').textContent > 1);	
-			e.target.closest('.product__quantity-controls').querySelector('.product__quantity-value').textContent = num - 1;	
+		if (e.target.closest('.product__quantity-controls').querySelector('.product__quantity-value').textContent == 1) {
+			e.target.closest('.product__quantity-controls').querySelector('.product__quantity-value').textContent = 1;	
+		} else {
+			e.target.closest('.product__quantity-controls').querySelector('.product__quantity-value').textContent = num - 1;
+		}
 	} else {
 		e.target.closest('.product__quantity-controls').querySelector('.product__quantity-value').textContent = num + 1;
 	}
